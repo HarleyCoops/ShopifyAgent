@@ -128,3 +128,24 @@ To make the CRO agent truly adaptive and increasingly effective, the plan is to 
     *   **Data Requirements:** RL models often require significant amounts of data to learn effectively.
 
 By integrating RL, the aim is to create a system that not only provides expert-level CRO advice but also evolves and optimizes its own strategies based on real-world results.
+## 7. Getting Started
+
+The following phased roadmap describes how to scaffold and kick off development:
+
+| Phase | Config Summary | Defaults (Confirmed) |
+|:-----:|:--------------|:--------------------|
+| 1. Monorepo Layout | Shared `backend/`, `frontend/`, `ml-core/`, `infra/`, `extension/` structure | Single Git repo, Docker Compose for local-dev |
+| 2. Backend API | FastAPI + OAuth2 (Shopify), Celery tasks, audit endpoints | Python 3.11, Poetry, PostgreSQL, RabbitMQ+Celery, Redis |
+| 3. ML Core | Heuristics engine (OpenCV/Pillow), image audit pipeline, LLM audit shell | Python modules + `examples.ipynb` |
+| 4. Frontend | Embedded Shopify Admin app using React Router & Polaris | React + Polaris, Docker static serve |
+| 5. Browser Extension | Chrome extension skeleton for in-page audit suggestions | Manifest v3, messaging to backend |
+| 6. Infrastructure & CI/CD | Docker Compose, Terraform skeleton, GitHub Actions | Docker Compose + Terraform + GH Actions |
+| 7. Docs & Onboarding | Structured README with install steps and dev commands | Focus on Docker setup + CI for onboarding |
+
+To get started locally, run:
+
+```bash
+docker-compose up --build
+```
+
+This will launch PostgreSQL, Redis, RabbitMQ, the backend API, and the frontend in development mode. See each component's README for further details.
